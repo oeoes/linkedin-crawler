@@ -20,7 +20,11 @@ class Auhentication:
             'csrfToken': self.csrfToken,
             'referer': 'https://www.linkedin.com/'
         }
-        Auhentication.session.post(self.login_url, data=data, headers=config.payload)
+        try:
+            Auhentication.session.post(self.login_url, data=data, headers=config.payload)
+        except:
+            print('Connection Error. :(')
+            exit(1)
 
     @staticmethod
     def get_cookies():
